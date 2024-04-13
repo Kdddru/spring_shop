@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+  <h4>List</h4>
+
+  <div th:replace = "~{ nav.html::navbar }" ></div>
+
+  <div class="card" th:each="i : ${items}">
+    <img src="https://placehold.co/300">
+    <div>
+      <h4 th:text="${i.name}"></h4>
+      <a th:href="@{'/detail/'+ ${i.id}}">상세페이지</a>
+      <p th:text="${i.price}"></p>
+      <a th:href="@{'/edit/' + ${i.id}}">수정</a>
+      <button th:onclick="|fetch('/delete/${i.id}',{ method : 'DELETE' })
+      .then((r)=>r.text())
+      .then(()=>{
+        location.reload()
+      })|">삭제</button>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link href="/main.css" rel="stylesheet">
+
+</head>
+<body>
+  <div th:replace = "~{ nav.html::navbar }" ></div>
+
+  <form action="/edit" method="POST">
+    <input name="id" th:value="${data?.id}" style="display : none">
+    <input name="name" th:value="${data?.name}">
+    <input name="price" th:value="${data?.price}">
+    <button type="submit">전송</button>
+  </form>
+</body>
+</html>
