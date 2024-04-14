@@ -67,7 +67,9 @@ public class ItemController {
       }
 
   }
-
+  
+  
+  //수정
   @GetMapping("/edit/{id}")
   String edit(Model model, @PathVariable long id){
 
