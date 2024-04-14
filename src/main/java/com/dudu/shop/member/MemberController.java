@@ -25,7 +25,8 @@ public class MemberController {
   @PostMapping("/member")
   String addMember(@ModelAttribute Member member) {
     String password = member.getPassword();
-    if(password.length() > 8){
+    String userName = member.getUsername();
+    if(password.length()>8 && userName.length()>6){
       //해쉬된 비밀번호
       var hashPassWord = new BCryptPasswordEncoder().encode(password);
       member.setPassword(hashPassWord);
