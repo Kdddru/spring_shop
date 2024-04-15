@@ -2,6 +2,7 @@ package com.dudu.shop.member;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,4 +42,27 @@ public class MemberController {
     }
 
   }
+
+  //login
+  @GetMapping("/login")
+  String login(){
+
+
+    return "login.html";
+  }
+
+  //mypage
+  @GetMapping("/mypage")
+  String mypage(Authentication auth){
+    if(auth.isAuthenticated()){
+
+      return "mypage.html";
+    }
+    else {
+
+      return "redirect:/login";
+    }
+
+  }
+
 }
